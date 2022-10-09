@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function App() {
+  let [user, setUser] = useState({ name: 'yq', age: 18 });
   return (
-    <div>
-      <h1>Hello StackBlitz!</h1>
-      <p>Start editing to see some magic happen :)</p>
+    <div onClick={() => setUser({ name: 'carrey', age: 7.5 })}>
+      <h1>{user.name}</h1>
+      <p>{user.age}</p>
     </div>
   );
 }
