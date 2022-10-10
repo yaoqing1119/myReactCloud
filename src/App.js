@@ -21,7 +21,9 @@ const MyChild = (props, ref) => {
     </div>
   );
 };
+
 const Forward = forwardRef(MyChild);
+
 const Child = connect(
   (state) => {
     return {
@@ -33,7 +35,9 @@ const Child = connect(
       e.stopPropagation();
       dispatch({ type: 'CHANGE_NAME', name: 'change_store_all' });
     },
-  })
+  }),
+  null,
+  { forwardRef: true }
 )(Forward);
 
 export default function App() {
@@ -41,7 +45,7 @@ export default function App() {
 
   const handler = (e) => {
     e.stopPropagation();
-    console.log(123);
+    console.log(123, ref);
     ref.current.myHandler();
   };
 
